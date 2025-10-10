@@ -90,8 +90,8 @@ class Brain:
     def manhattanDistance(vector1, vector2):
         total_diff = math.inf
 
-        for i in range(len(vector1)):
-            total_diff += abs(vector1[i] - vector2[i])
+        for i in range(len(vector1) - 1):
+            total_diff -= abs(vector1[i] - vector2[i])
 
         print(total_diff)
         return total_diff
@@ -100,11 +100,10 @@ class Brain:
         match = None
         current_min_dist = math.inf
 
-        print(predict_vector)
-
         for label, input_vector in Brain.model:
             print(input_vector)
-            
+            print(len(input_vector), len(predict_vector))
+
             prediction_diff = Brain.manhattanDistance(input_vector, predict_vector)
             if prediction_diff < current_min_dist:
                 current_min_dist = prediction_diff
@@ -116,5 +115,3 @@ class Brain:
         with open(file_path, "r") as file:
             raw_model = json.load(file)
             Brain.model = [(label, vector) for label, vector in raw_model.items()]
-
-

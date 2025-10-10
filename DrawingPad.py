@@ -22,6 +22,6 @@ class DrawingPad:
         Brain.normalizePoints(self.positions)
         resultGenMatrix = Brain.genNormalMatrix(self.positions)
         prediction_vectors = Brain.flattenMatrix(resultGenMatrix)
-        Brain.manhattanDistance(Brain.model, prediction_vectors)
+        # Brain.manhattanDistance(Brain.model, prediction_vectors)
         Brain.visualizeMatrix(resultGenMatrix)
         Brain.predictObject(prediction_vectors)
