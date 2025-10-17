@@ -86,9 +86,10 @@ class Brain:
             visualization += " ".join(str(cell) for cell in row) + "\n"
 
         print(visualization)
-    
+        
+    @staticmethod
     def manhattanDistance(vector1, vector2):
-        total_diff = 0
+        total_sum = 0
 
         for i in range(len(vector1)):
             total_sum += abs(vector1[i] - vector2[i])
