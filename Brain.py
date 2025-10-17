@@ -88,28 +88,30 @@ class Brain:
         print(visualization)
     
     def manhattanDistance(vector1, vector2):
-        total_diff = math.inf
+        total_diff = 0
 
-        for i in range(len(vector1) - 1):
-            total_diff -= abs(vector1[i] - vector2[i])
+        for i in range(len(vector1)):
+            total_sum += abs(vector1[i] - vector2[i])
 
-        print(total_diff)
-        return total_diff
+        print(total_sum)
+        return total_sum
 
     def predictObject(predict_vector):
         match = None
-        current_min_dist = math.inf
+        current_min_dist = 1000
 
         for label, input_vector in Brain.model:
-            print(input_vector)
-            print(len(input_vector), len(predict_vector))
+            print(label, input_vector, predict_vector)
 
             prediction_diff = Brain.manhattanDistance(input_vector, predict_vector)
             if prediction_diff < current_min_dist:
                 current_min_dist = prediction_diff
                 match = label
 
-        print(match)
+        print(predict_vector)
+        print(current_min_dist)
+
+        print("You Drew: ", match)
 
     def packBrainModel(file_path):
         with open(file_path, "r") as file:
